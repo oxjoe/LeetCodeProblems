@@ -8,12 +8,7 @@ import java.util.List;
 
 public class fizzBuzzSolution {
 
-  public static void main(String[] args) {
-    fizzBuzzSolution obj = new fizzBuzzSolution();
-    System.out.println(obj.fizzBuzz(15));
-  }
-
-  public List<String> fizzBuzz(int n) {
+  public static List<String> fizzBuzz(int n) {
     // init list
     List<String> myList = new ArrayList<String>();
 
@@ -32,7 +27,8 @@ public class fizzBuzzSolution {
 
     return myList;
   }
+
+  public static void main(String[] args) {
+    System.out.println(fizzBuzz(15));
+  }
 }
-  /* OUTPUT
-  [1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, FizzBuzz]
-   */
