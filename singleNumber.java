@@ -9,25 +9,52 @@ import java.util.Arrays;
 public class singleNumber {
 
   public static int solution(int[] nums) {
-//    Function to sort from least to greatest
-//    then iterate through the array and compare the current and the next value if they are the same
-//    if they are not then return current value
 
-    if (nums.length == 1) {
-      return nums[1];
-    }
+    // Sort the array
     Arrays.sort(nums);
-    for (int i = 0; i < nums.length; i++) {
-      if (i + 1 == nums.length) { // must be added b/c if i+1 is out of the loop
+    int answer = 0;
+
+//  iterate through array, input will always be odd, i+=2 to skip every two ints
+    for (int i = 0; i <= nums.length + 1; i += 2) {
+//       if cur value is != to cur value + 1 then cur is answer, if cur value + 1 is out of bounds
+//       then goto catch
+      try {
+        if (nums[i] != nums[i + 1]) {
+          answer = nums[i];
+          break;
+        }
+//     Catch the error and set answer as the last element in array
+      } catch (ArrayIndexOutOfBoundsException e) {
+        answer = nums[nums.length - 1];
         break;
       }
-      if (nums[i] != nums[i + 1]) {
-        return nums[i];
-      }
     }
+    return answer;
   }
 
   public static void main(String[] args) {
-    //System.out.println(solution([1]));
+    int[] array = new int[]{1, 1, 3, 3, 2, 6, 6, 5, 5};
+    System.out.print(solution(array));
   }
 }
+
+// Home come this has error of missing return statement? scope of return?
+
+/*
+    // Sort the array
+    Arrays.sort(nums);
+    int answer = 0;
+
+    // Iterate thorough and see if the current value and the next value are the same
+    // if they aren't then the current value is the answer
+    for (int i = 0; i <= nums.length + 1; i += 2) {
+      try {
+        if (nums[i] != nums[i + 1]) {
+          return nums[i];
+        }
+      } catch (ArrayIndexOutOfBoundsException e) {
+        return nums[nums.length - 1];
+      }
+    }
+    //return 0;
+  */
