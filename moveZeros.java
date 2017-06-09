@@ -8,29 +8,37 @@ import java.util.Arrays;
 public class moveZeros {
 
   public static void solution(int[] nums) {
-    int counter = 0;
+    int totalNumZeros = 0;
     // count # of zeros
     for (int i = 0; i < nums.length; i++) {
       if (nums[i] == 0) {
-        counter++;
+        totalNumZeros++;
       }
     }
-    int nonZeros = nums.length - counter;
-    counter = 0;
-    while (counter < nonZeros) {
-      if (nums[i] == 0) {
-        for (int j = i; j < ; j++) {
 
+    int counter;
+    int zerosInLoop = 0;
+
+    for (int i = 0; i < nums.length; i++) {
+      if (nums[i] == 0) {
+        counter = 0;
+        while (counter < nums.length - (i + 1)) {
+          nums[i + counter] = nums[i + counter + 1];
+          counter++;
         }
         nums[nums.length - 1] = 0;
-        continue;
+        zerosInLoop++;
       }
-      counter++;
+      if (zerosInLoop == totalNumZeros) {
+        break;
+      }
     }
+
+
   }
 
   public static void main(String[] args) {
-    int[] temp = {0, 1, 0, 3, 12};
+    int[] temp = {0, 0,0,0, 0,2,3,4};
     solution(temp);
     System.out.println(Arrays.toString(temp));
   }
