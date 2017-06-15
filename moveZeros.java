@@ -16,29 +16,27 @@ public class moveZeros {
       }
     }
 
-    int counter;
     int zerosInLoop = 0;
-
-    for (int i = 0; i < nums.length; i++) {
-      if (nums[i] == 0) {
-        counter = 0;
-        while (counter < nums.length - (i + 1)) {
-          nums[i + counter] = nums[i + counter + 1];
-          counter++;
+    int current = 0;
+    while (zerosInLoop < totalNumZeros) {
+      if (nums[current] == 0) {
+        for (int i = current; i < nums.length - zerosInLoop; i++) {
+          if (i+1 >= nums.length) {
+            continue;
+          }
+          nums[i] = nums[i + 1];
         }
         nums[nums.length - 1] = 0;
+        //(0,1,0)
         zerosInLoop++;
-      }
-      if (zerosInLoop == totalNumZeros) {
-        break;
+      } else if (nums[current] != 0) {
+        current++;
       }
     }
-
-
   }
 
   public static void main(String[] args) {
-    int[] temp = {0, 0,0,0, 0,2,3,4};
+    int[] temp = {0, 1, 0, 3, 12};
     solution(temp);
     System.out.println(Arrays.toString(temp));
   }
