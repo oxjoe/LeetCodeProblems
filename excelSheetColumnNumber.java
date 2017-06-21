@@ -4,28 +4,25 @@
  */
 public class excelSheetColumnNumber {
 
-  /*
-  I/O:
-    A -> 1
-    B -> 2
-    C -> 3
-    ...
-    Z -> 26
-    AA -> 27
-    AB -> 28
-   */
+  public static int titleToNumber(String s) {
+    char[] arr = s.toCharArray();
+    int answer = 0;
 
-  /*
-  Make a dictionary for A-Z and and compare each key to string entered
-  if String has two chars then get the second char, compare it to key and add 26.
-   */
+    if (arr.length == 1) {
+      answer = convertToNum(arr[0]);
+    } else if (arr.length == 2) {
+      answer = convertToNum(arr[1]) + (convertToNum(arr[0]) * 26);
+    }
+    return answer;
+  }
 
-  public int titleToNumber(String s) {
-    return 0;
+  public static int convertToNum(char c) {
+    return (int) c - 64;
   }
 
   public static void main(String[] args) {
-
+    System.out.println(titleToNumber("AA"));
+    System.out.println(titleToNumber("ZZ"));
+    // AAA->703, 27*26?
   }
-
 }
