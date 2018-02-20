@@ -1,7 +1,7 @@
 /**
  * Created by Joseph on 6/5/2017. https://leetcode.com/problems/reverse-string/
  */
-public class reverseString {
+public class Num344_ReverseString {
 
   // Swaps begin and end element, increasing begin and decreasing end each time.
   public static String reverseStringOne(String s) {
